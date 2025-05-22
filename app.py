@@ -19,7 +19,7 @@ def index():
         method = request.form.get('method')
         uploaded_file = request.files.get('image')
 
-        # Save new uploaded image or use existing
+       
         if uploaded_file:
             filename = secure_filename(uploaded_file.filename)
             image_path = os.path.join(UPLOAD_FOLDER, filename)
