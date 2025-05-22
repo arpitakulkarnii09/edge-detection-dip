@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edge Detection</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fefae0;
+            color: #283618;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #fff;
+            border: 2px solid #dda15e;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        h1 {
+            color: #606c38;
+            text-align: center;
+        }
+        form {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        input[type="file"], select, button {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #bc6c25;
+        }
+        .images {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .images div {
+            text-align: center;
+        }
+        .images img {
+            max-width: 350px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edge Detection Using OpenCV</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*">
+            <select name="method" required>
+                <option value="" disabled selected>Select method</option>
+                <option value="canny">Canny</option>
+                <option value="sobel">Sobel</option>
+                <option value="laplacian">Laplacian</option>
+            </select>
+            <button type="submit">Detect Edges</button>
+        </form>
+
+        {% if original and result %}
+        <div class="images">
+            <div>
+                <h3>Original Image</h3>
+                <img src="{{ url_for('uploaded_file', filename=original.split('/')[-1]) }}" alt="Original">
+            </div>
+            <div>
+                <h3>Edge Detected Image</h3>
+                <img src="{{ url_for('result_file', filename=result.split('/')[-1]) }}" alt="Edge Detected">
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
