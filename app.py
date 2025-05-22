@@ -4,7 +4,7 @@ import cv2
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'  # Replace with your own secure key
+app.secret_key = 'your_secret_key_here'  
 
 UPLOAD_FOLDER = 'static/uploads/'
 RESULT_FOLDER = 'static/results/'
